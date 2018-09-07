@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Web管理平台</title>
+  <script type="text/javascript" src="http://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>  
+  <style>
+    a{
+      display: inline-block;
+      width: 20%;
+    }
+    #app {
+      margin: 0 auto;
+      max-width: 1200px;
+    }
+  </style>
+</head>
+<body>
+  <h1>movie show</h1>
+  <div id="app">
+  </div>  
+</body>
+<script>
+  var data = [];
+ function getData(){  
+      $.get("/list", function (data)  
+        {  
+           console.log(data);
+           var data = data;
+            $.each (data, function (i, item)  
+            {  
+                $ ("#app").append ("<a href = " + item.url + " target='_blank'>" + item.title + "</a>");  
+                // $('#app').append("<img src = " + item.img + "></img>");
+            });  
+        });  
+  };
+getData();
+</script>
+</html>
