@@ -59,8 +59,6 @@
         });
    }
 
-    app.use(express.static(path.join(__dirname, 'public')))
-
     app.get('/list', function (req, res) {  //get请求
         fs.readFile('./data.json', function(err,data) {
             if(err){
@@ -78,6 +76,10 @@
             }
         })
     });
+
+
+    app.set('port', (process.env.PORT || 3000))
+    app.use(express.static(path.join(__dirname, 'public')))
 
     app.listen(3000, () => {
             console.log(`App listening at port 3000`)
